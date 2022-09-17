@@ -2,12 +2,14 @@ const path = require("path");
 const cors = require("cors");
 const express = require("express");
 const app = express();
+const morgan = require("morgan");
 
 // ------------------------------------ MIDDLEWARE ------------------------------------
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../client/build")));
 app.use(cors());
+app.use(morgan("dev"));
 
 app.get('/', (req, res) => {
   console.log('bet')
